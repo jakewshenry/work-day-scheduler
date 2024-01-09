@@ -36,9 +36,9 @@ The app should:
 
 ## Usage
 
-Link to deployed application - 
+Link to deployed application - https://jakewshenry.github.io/work-day-scheduler/
 
- ![Screenshot of application](./)
+ ![Screenshot of application](./assets/images/SS1.png)
 
 ## Credits
 
@@ -50,11 +50,9 @@ GitHub Pages README: https://coding-boot-camp.github.io/full-stack/github/profes
 
 MDN If else statements - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else
 
-Quiz questions: https://www.sitepoint.com/simple-javascript-quiz/
-
 MDN Local Storage - https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 
-MDN - Audio Element - https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement/Audio
+Day JS - https://day.js.org/docs/en/display/format
 
 ## License
 
