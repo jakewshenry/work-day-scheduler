@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var container = $(".container")
 
-    var timeTable = JSON.parse(localStorage.getItem('timeTable')) || [];
-
     var schedule = [
         9, 10, 11, 12, 13, 14, 15, 16, 17
     ];
@@ -25,9 +23,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var textArea = $('<textarea>');
         textArea.addClass('textarea col-8');
+        textArea.attr('id', 'textArea' + i);
 
         var saveBtn = $('<button>');
         saveBtn.addClass('col-2 saveBtn');
+
+        //creating an attribute and assigning i
+        saveBtn.attr('data-id', i);
 
         var saveIcon = $('<i>');
         saveIcon.addClass('fas fa-save');
@@ -40,14 +42,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var differenceInTime = currentHour.diff(time, "minutes");
         if(differenceInTime < 0) {
-            textArea.addClass('past');
-        } else if (differenceInTime > 60) {
             textArea.addClass('future');
+        } else if (differenceInTime > 60) {
+            textArea.addClass('past');
             
         } else if (differenceInTime <= 60 && differenceInTime >= 0) {
             textArea.addClass('present');
         }
 
+        //getting data 
+        var text = JSON.parse(localStorage.getItem(`scheduleData${i}`)) || '';
+
+        //applying value to textArea
+        textArea.val(text);
     }
 
+    container.on('click', '.saveBtn', function() {
+        
+        // identifying which specific button is being pressed /8 with 'this', and .data is getting attribute of data-id
+        var orderID = $(this).data('id');
+
+        // getting the text area element with the same order ID.
+        var textArea = $(`#textArea${orderID}`);
+
+        // saving the textArea data to local storage and converting value to string
+        localStorage.setItem(`scheduleData${orderID}`, JSON.stringify(textArea.val()));
+
+      }); 
 });
